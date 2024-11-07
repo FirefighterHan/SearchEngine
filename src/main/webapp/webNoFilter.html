@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Hadis SM</title>
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google fonts-->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://www.fontspace.com/saleha-font-f93398" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Tinos:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&amp;display=swap" rel="stylesheet">
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="css/styles.css" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <!-- Navigation -->
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+            <div class="container px-5">
+                <a class="navbar-brand" href="web.html">HSM</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars ms-1"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="moreInfo.html">Info</a></li>
+                    </ul>
+                    
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Background Video -->
+    <video class="bg-video" playsinline="playsinline" muted="muted" autoplay="autoplay" loop="loop">
+        <source src="assets/mp4/bg.mp4" type="video/mp4">
+    </video>
+
+    <!-- Content Wrapper -->
+    <div class="content-wrapper">
+        <!-- Masthead -->
+        <div class="masthead">
+            <div class="masthead-content text-white">
+                <div class="container-fluid px-4 px-lg-0">
+                    <h1 class="fst-italic lh-1 mb-4">HSM</h1>
+                    <h2 class="fst-italic lh-1 mb-4">-Hadis Sahih Muslim-</h2>
+                    <h3 class="fst-italic lh-1 mb-4">Jenis Carian: Tiada Tapisan</h3>
+                    <!-- Form -->
+					<form id="searchForm" class="form-inline mb-4" method="get" action="displayNoFilter.html">
+					    <div class="form-group mb-2">
+					        <label for="query" class="sr-only">Masukkan carian anda:</label>
+					        <input type="text" class="form-control" id="query" name="query" placeholder="Masukkan carian anda">
+					    </div>
+					    <!-- Search buttons -->
+					    <button type="submit" class="btn btn-primary mb-2" onclick="nofilterResult()">Cari</button>
+					</form>
+					<label>Pilihan Jenis Carian:</label>
+					<button id="default">Carian Biasa</button>
+					<button id="lemma">Lematasi</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Topics Section -->
+        <div class="container mt-5 d-flex">
+		    <!-- Topics Section -->
+		    <div class="col-md-6">
+		        <h2 class="text-center mb-4">Topik</h2>
+		        <div class="table-responsive">
+		            <table class="table table-bordered text-center">
+		                <tbody>
+		                    <tr>
+		                        <td><a href="#" onclick="searchTopic('Iman')">Iman</a></td>
+		                        <td><a href="#" onclick="searchTopic('Puasa')">Puasa</a></td>
+		                    </tr>
+		                    <tr>
+		                        <td><a href="#" onclick="searchTopic('Zakat')">Zakat</a></td>
+		                        <td><a href="#" onclick="searchTopic('Haji Umrah')">Haji Umrah</a></td>
+		                    </tr>
+		                    <tr>
+		                        <td><a href="#" onclick="searchTopic('Niat')">Niat</a></td>
+		                        <td><a href="#" onclick="searchTopic('Solat')">Solat</a></td>
+		                    </tr>
+		                    <tr>
+		                        <td><a href="#" onclick="searchTopic('Kiamat')">Kiamat</a></td>
+		                        <td><a href="#" onclick="searchTopic('Merdeka')">Merdeka</a></td>
+		                    </tr>
+		                    <tr>
+		                        <td><a href="#" onclick="searchTopic('Jihad')">Jihad</a></td>
+		                        <td><a href="#" onclick="searchTopic('Doa')">Doa</a></td>
+		                    </tr>
+		                </tbody>
+		            </table>
+		        </div>
+		    </div>
+		    
+		    <div class="col-md-6">
+            <h2 class="text-center mb-4">Hadis Apa Hari Ini?</h2>
+            <div id="randomHadiths" class="hadith-container"></div>
+        	</div>
+    	</div>
+    </div>
+
+    <!-- Include the JavaScript file -->
+    <script src="solrConnect.js"></script>
+    
+    <script>
+	    document.addEventListener('DOMContentLoaded', function() {
+	        fetchRandomHadiths();
+	    });
+	    
+	    document.getElementById('default').onclick = function() {
+            window.location.href = 'web.html';
+        };
+        
+        document.getElementById('lemma').onclick = function() {
+            window.location.href = 'webLemma.html';
+        };
+    </script>
+    <!-- Bootstrap core JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS -->
+    <script src="js/scripts.js"></script>
+    
+    <!-- Custom JS file link -->
+    <script src="js/stickyHeader.js"></script>
+</body>
+</html>
